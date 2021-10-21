@@ -37,13 +37,6 @@ class QueryBuilder
         $this->model = $model;
     }
 
-    public function all()
-    {
-        $result = $this->model->pdo->query("SELECT * FROM " . $this->model->getTableName())->fetchAll(PDO::FETCH_ASSOC);
-
-        return $this->resolveResult($result);
-    }
-
     public function get()
     {
         $this->sql = "SELECT $this->select FROM " . $this->model->getTableName() . " ";

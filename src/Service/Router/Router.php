@@ -73,10 +73,6 @@ class Router
 
         if ($method instanceof \Closure) {
             echo call_user_func_array($method, array($request));
-        } else {
-            list($controller, $action) = explode('::', $method);
-
-            return (new $controller)->$action($request);
         }
     }
 }
