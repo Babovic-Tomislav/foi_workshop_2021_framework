@@ -16,34 +16,6 @@ class BaseController
         $loader = new \Twig\Loader\FilesystemLoader('../src/templates');
         $twig = new \Twig\Environment($loader);
 
-        $files = new DirectoryIterator(__DIR__ . '/../Twig');
-
-        foreach($files as $file) {
-            if ($file->isDot()) {
-                continue;
-            }
-
-            $class = 'App\\Twig\\' . rtrim($file->getFilename(), '.php');
-
-            $twig->addExtension(new $class);
-        }
-        
-        if (file_exists('../src/Twig')) {
-            $files = new DirectoryIterator( '../src/Twig');
-
-            foreach($files as $file) {
-                if ($file->isDot()) {
-                    continue;
-                }
-
-                $class = 'App\\Twig\\' . rtrim($file->getFilename(), '.php');
-
-                $twig->addExtension(new $class);
-            }
-        }
-            
-            
-
         $this->twig = $twig;
     }
 
